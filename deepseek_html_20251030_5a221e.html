@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Publish Website - NutriCalc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #1a2a6c, #b21f1f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .method-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .method-description {
+            color: #5d6d7e;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .method-steps {
+            margin-bottom: 20px;
+        }
+
+        .method-steps ol {
+            padding-left: 20px;
+        }
+
+        .method-steps li {
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1c6ea4);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-free {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+
+        .btn-free:hover {
+            background: linear-gradient(135deg, #27ae60, #219653);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .btn-premium:hover {
+            background: linear-gradient(135deg, #8e44ad, #7d3c98);
+        }
+
+        .comparison {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .comparison h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .fa-check {
+            color: #2ecc71;
+        }
+
+        .fa-times {
+            color: #e74c3c;
+        }
+
+        .fa-minus {
+            color: #f39c12;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cloud-upload-alt"></i> Panduan Publish Website</h1>
+            <p class="subtitle">Pelajari berbagai cara untuk mempublish website kalkulator BMR dan nutrisi Anda agar dapat diakses melalui URL</p>
+        </header>
+
+        <div class="methods-grid">
+            <!-- Method 1: GitHub Pages -->
+            <div class="method-card">
+                <div class="method-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h2 class="method-title">GitHub Pages</h2>
+                <p class="method-description">
+                    Hosting gratis dari GitHub untuk proyek website statis. Cocok untuk pemula dan proyek personal.
+                </p>
+                <div class="method-steps">
+                    <ol>
+                        <li>Buat akun GitHub</li>
+                        <li>Buat repository baru</li>
+                        <li>Upload file HTML, CSS, JS</li>
+                        <li>Aktifkan GitHub Pages</li>
+                        <li>Akses website via URL</li>
+                    </ol>
+                </div>
+                <a href="https://pages.github.com" target="_blank" class="btn btn-free">
+                    <i class="fas fa-external-link-alt"></i> Kunjungi GitHub Pages
+                </a>
+            </div>
+
+            <!-- Method 2: Netlify -->
+            <div class="method-card">
+                <div class="method-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2 class="method-title">Netlify</h2>
+                <p class="method-description">
+                    Platform hosting modern dengan deploy otomatis dari GitHub, GitLab, atau Bitbucket.
+                </p>
+                <div class="method-steps">
+                    <ol>
+                        <li>Daftar akun Netlify</li>
+                        <li>Connect dengan GitHub</li>
+                        <li>Pilih repository</li>
+                        <li>Deploy otomatis</li>
+                        <li>Dapatkan URL custom</li>
+                    </ol>
+                </div>
+                <a href="https://www.netlify.com" target="_blank" class="btn btn-free">
+                    <i class="fas fa-external-link-alt"></i> Kunjungi Netlify
+                </a>
+            </div>
+
+            <!-- Method 3: Vercel -->
+            <div class="method-card">
+                <div class="method-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="method-title">Vercel</h2>
+                <p class="method-description">
+                    Platform hosting yang powerful dengan performa tinggi, cocok untuk website modern.
+                </p>
+                <div class="method-steps">
+                    <ol>
+                        <li>Buat akun Vercel</li>
+                        <li>Import project dari GitHub</li>
+                        <li>Konfigurasi build settings</li>
+                        <li>Deploy dengan satu klik</li>
+                        <li>URL langsung aktif</li>
+                    </ol>
+                </div>
+                <a href="https://vercel.com" target="_blank" class="btn btn-free">
+                    <i class="fas fa-external-link-alt"></i> Kunjungi Vercel
+                </a>
+            </div>
+
+            <!-- Method 4: Hostinger -->
+            <div class="method-card">
+                <div class="method-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h2 class="method-title">Hosting Berbayar</h2>
+                <p class="method-description">
+                    Hosting berbayar dengan fitur lengkap, domain gratis, dan performa optimal.
+                </p>
+                <div class="method-steps">
+                    <ol>
+                        <li>Pilih paket hosting</li>
+                        <li>Daftar domain</li>
+                        <li>Upload file via cPanel/FTP</li>
+                        <li>Konfigurasi database (jika perlu)</li>
+                        <li>Website online dengan domain sendiri</li>
+                    </ol>
+                </div>
+                <a href="https://www.hostinger.co.id" target="_blank" class="btn btn-premium">
+                    <i class="fas fa-external-link-alt"></i> Cek Hostinger
+                </a>
+            </div>
+
+            <!-- Method 5: Firebase Hosting -->
+            <div class="method-card">
+                <div class="method-icon">
+                    <i class="fab fa-google"></i>
+                </div>
+                <h2 class="method-title">Firebase Hosting</h2>
+                <p class="method-description">
+                    Hosting dari Google dengan CDN global, SSL gratis, dan integrasi dengan layanan Firebase lainnya.
+                </p>
+                <div class="method-steps">
+                    <ol>
+                        <li>Buat project di Firebase</li>
+                        <li>Install Firebase CLI</li>
+                        <li>Inisialisasi project</li>
+                        <li>Deploy ke Firebase</li>
+                        <li>Akses via URL Firebase</li>
+                    </ol>
+                </div>
+                <a href="https://firebase.google.com/docs/hosting" target="_blank" class="btn btn-free">
+                    <i class="fas fa-external-link-alt"></i> Pelajari Firebase
+                </a>
+            </div>
+
+            <!-- Method 6: Cloudflare Pages -->
+            <div class="method-card">
+                <div class="method-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h2 class="method-title">Cloudflare Pages</h2>
+                <p class="method-description">
+                    Platform JAMstack untuk frontend developer dengan deploy yang cepat dan global network.
+                </p>
+                <div class="method-steps">
+                    <ol>
+                        <li>Daftar akun Cloudflare</li>
+                        <li>Connect dengan Git provider</li>
+                        <li>Pilih repository</li>
+                        <li>Setup build settings</li>
+                        <li>Deploy dan dapatkan URL</li>
+                    </ol>
+                </div>
+                <a href="https://pages.cloudflare.com" target="_blank" class="btn btn-free">
+                    <i class="fas fa-external-link-alt"></i> Kunjungi Cloudflare
+                </a>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <h2><i class="fas fa-balance-scale"></i> Perbandingan Platform Hosting</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Platform</th>
+                        <th>Gratis</th>
+                        <th>Domain Custom</th>
+                        <th>SSL</th>
+                        <th>Kemudahan</th>
+                        <th>Kustomisasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GitHub Pages</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-minus"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td>Menengah</td>
+                        <td>Terbatas</td>
+                    </tr>
+                    <tr>
+                        <td>Netlify</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td>Mudah</td>
+                        <td>Luas</td>
+                    </tr>
+                    <tr>
+                        <td>Vercel</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td>Mudah</td>
+                        <td>Luas</td>
+                    </tr>
+                    <tr>
+                        <td>Firebase</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td>Menengah</td>
+                        <td>Luas</td>
+                    </tr>
+                    <tr>
+                        <td>Cloudflare</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td>Mudah</td>
+                        <td>Luas</td>
+                    </tr>
+                    <tr>
+                        <td>Hosting Berbayar</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td>Menengah</td>
+                        <td>Sangat Luas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="comparison">
+            <h2><i class="fas fa-file-download"></i> Cara Download & Simpan File Website</h2>
+            <div class="method-steps">
+                <h3>Langkah-langkah:</h3>
+                <ol>
+                    <li>Buka teks editor (VS Code, Notepad++, Sublime Text, dll)</li>
+                    <li>Salin kode HTML yang telah dibuat</li>
+                    <li>Buat file baru dengan nama <code>index.html</code></li>
+                    <li>Tempel kode HTML ke dalam file</li>
+                    <li>Simpan file</li>
+                    <li>Buka file di browser untuk testing</li>
+                </ol>
+                
+                <div class="note">
+                    <strong>Tips:</strong> Untuk testing lokal, cukup buka file <code>index.html</code> langsung di browser. 
+                    Website akan berfungsi penuh meski tanpa server.
+                </div>
+                
+                <h3>Struktur File yang Diperlukan:</h3>
+                <div class="code-block">
+                    project-folder/<br>
+                    ├── index.html&nbsp;&nbsp;&nbsp;&nbsp;(file utama)<br>
+                    └── assets/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(folder untuk gambar, dll - opsional)
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <h2><i class="fas fa-question-circle"></i> FAQ - Pertanyaan Umum</h2>
+            <div class="method-steps">
+                <h3>1. Mana platform terbaik untuk pemula?</h3>
+                <p><strong>Netlify</strong> atau <strong>Vercel</strong> karena kemudahan penggunaan dan deploy otomatis dari GitHub.</p>
+                
+                <h3>2. Apakah website bisa diakses via smartphone?</h3>
+                <p>Ya, semua platform di atas menghasilkan website yang responsive dan bisa diakses dari perangkat apapun.</p>
+                
+                <h3>3. Berapa biaya untuk hosting gratis?</h3>
+                <p>Semua platform yang ditandai dengan tombol hijau benar-benar gratis untuk penggunaan dasar.</p>
+                
+                <h3>4. Bagaimana cara mendapatkan domain custom?</h3>
+                <p>Anda bisa membeli domain dari penyedia seperti Namecheap, GoDaddy, atau langsung dari platform hosting.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Panduan Publish Website &copy; 2023 | NutriCalc - Kalkulator BMR & Nutrisi</p>
+    </footer>
+</body>
+</html>
